@@ -1,0 +1,17 @@
+{:paths ["src"]
+
+ :aliases
+ {:test
+  {:extra-paths ["test"]}
+
+  :cljs
+  {:extra-deps {org.clojure/clojurescript  {:mvn/version "1.11.60"}}}
+
+  :kaocha
+  {:extra-deps {lambdaisland/kaocha {:mvn/version "1.80.1274"}}
+   :main-opts  ["-m" "kaocha.runner"]}
+
+  :cljs-test-runner
+  {:extra-deps  {olical/cljs-test-runner   {:mvn/version "3.8.0"}}
+   :main-opts   ["-m" "cljs-test-runner.main"
+                 "-o" "target/cljs-test-runner"]}}}
