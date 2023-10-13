@@ -1,3 +1,5 @@
-{:tasks {test      {:depends [test:clj test:cljs]}
-         test:clj  {:task (clojure "-M:test:kaocha")}
-         test:cljs {:task (clojure "-M:cljs:test:cljs-test-runner")}}}
+{:tasks {jar       (clojure "-T:build" "jar")
+         test      {:depends [test:clj test:cljs]}
+         test:clj  (clojure "-M:test:kaocha")
+         test:cljs (clojure "-M:cljs:test:cljs-test-runner")
+         deploy    (clojure "-T:build" "deploy")}}

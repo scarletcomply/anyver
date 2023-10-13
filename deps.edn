@@ -14,4 +14,9 @@
   :cljs-test-runner
   {:extra-deps  {olical/cljs-test-runner   {:mvn/version "3.8.0"}}
    :main-opts   ["-m" "cljs-test-runner.main"
-                 "-o" "target/cljs-test-runner"]}}}
+                 "-o" "target/cljs-test-runner"]}
+
+  :build
+  {:deps {io.github.clojure/tools.build {:mvn/version "0.9.3"}
+          slipset/deps-deploy           {:mvn/version "0.2.0"}}
+   :ns-default build}}}
