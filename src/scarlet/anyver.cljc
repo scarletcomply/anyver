@@ -1,4 +1,4 @@
-(ns scarlet.anyver.core
+(ns scarlet.anyver
   "Parse and compare generic version strings.
 
    Does not assume any versioning scheme such as Semantic Versioning, but
@@ -12,14 +12,14 @@
 
 (defn- compare-parts [x y]
   (cond
-    (int? x) (if (int? y) (- x y) 1)
+    (int? x) (if (int? y) (compare x y) 1)
     (int? y) -1
     (nil? x) (if (nil? y) 0 1)
     (nil? y) -1
     :else (compare x y)))
 
 (defn- compare-vectors [x y]
-  (let [dlen (- (count x) (count y))
+  (let [dlen (compare (count x) (count y))
         [x y] (if (zero? dlen)
                 [x y]
                 (if (neg? dlen)

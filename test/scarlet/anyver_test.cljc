@@ -1,7 +1,7 @@
-(ns scarlet.anyver.core-test
+(ns scarlet.anyver-test
   (:require [clojure.test :refer [deftest is]]
-            [scarlet.anyver.core :as anyver :refer [version version-compare
-                                                    version?]]))
+            [scarlet.anyver :as anyver :refer [version version-compare
+                                               version?]]))
 
 (deftest coerce-test
   (is (version? (version "1.0")))
@@ -44,12 +44,17 @@
 
 (deftest compare-test
   (is (pos? (version-compare "2" "1")))
+  (is (pos? (version-compare "10" "9")))
+  (is (pos? (version-compare "1.10.2" "1.9.9")))
   (is (pos? (version-compare "2.0" "1.0")))
   (is (pos? (version-compare "2.0" "2")))
   (is (pos? (version-compare "2.1" "2.0.0")))
   (is (pos? (version-compare "1.0" nil)))
   (is (pos? (version-compare "1.0" "1.0-alpha")))
   (is (pos? (version-compare "1.0-rc2" "1.0-rc1")))
+  (is (pos? (version-compare "20231013160800" "20231012100400")))
+  (is (pos? (version-compare "2147483650" "1")))
+  (is (pos? (version-compare "2147483651" "2147483650")))
 
   (is (zero? (version-compare "1.0" "v1.0")))
   (is (zero? (version-compare "1.0" "1_0")))
@@ -64,11 +69,14 @@
 
   (is (neg? (version-compare "1.0.0" "1.0.0+365")))
   (is (neg? (version-compare "2.0.0" "4")))
+  (is (neg? (version-compare "1.9.7" "1.12.0")))
   (is (neg? (version-compare 1 [1 0])))
   (is (neg? (version-compare "1.0.0-alpha2" "1.0.0-beta1")))
   (is (neg? (version-compare "1.0.0-alpha2" "1.0.0-alpha3")))
   (is (neg? (version-compare "1.0.0-alpha2" "1.0.0-alpha10")))
   (is (neg? (version-compare "1.0.0-alpha2" "1.0.0")))
+  (is (neg? (version-compare "1" "2147483650")))
+  (is (neg? (version-compare "2147483650" "2147483651")))
   (is (neg? (version-compare nil "1.0")))
 
   (is (anyver/earlier? "v1.0" "2.1"))
