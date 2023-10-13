@@ -1,5 +1,9 @@
 # anyver
 
+[![Build Status](https://img.shields.io/github/actions/workflow/status/scarletcomply/anyver/ci.yml?branch=main)](https://github.com/scarletcomply/anyver/actions)
+[![cljdoc](https://cljdoc.org/badge/cc.scarlet/anyver)][cljdoc]
+[![Clojars](https://img.shields.io/clojars/v/cc.scarlet/anyver.svg)][clojars]
+
 Parse and sort versions intuitively.
 
 ## Overview
@@ -36,10 +40,18 @@ Therefore:
 
 ## Installation
 
+Releases are available from [Clojars][clojars].
+
 deps.edn:
 
 ```clojure
- io.github.scarletcomply/anyver {:git/tag "GIT_TAG", :git/sha "GIT_SHA"}
+cc.scarlet/anyver {:mvn/version "0.2.0"}
+```
+
+Leiningen/Boot:
+
+```clojure
+[cc.scarlet/anyver "0.2.0"]
 ```
 
 ## License
@@ -49,3 +61,6 @@ Copyright (c) 2023 [Scarlet Global Holdings Ltd][scarlet].
 
 [MIT License]: ./LICENSE
 [scarlet]: https://scarlet.cc
+
+[cljdoc]: https://cljdoc.org/jump/release/cc.scarlet/anyver
+[clojars]: https://clojars.org/cc.scarlet/anyver
