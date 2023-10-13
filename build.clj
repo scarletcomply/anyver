@@ -3,7 +3,7 @@
             [deps-deploy.deps-deploy :as dd]))
 
 (def lib 'cc.scarlet/anyver)
-(def version "0.2.0")
+(def version "0.2.1")
 
 (def repo-url (str "https://github.com/scarletcomply/anyver"))
 (def scm {:connection (str "scm:git:" repo-url)

@@ -9,6 +9,12 @@ All notable changes to this project will be documented in this file.
 <!-- ### Changed -->
 <!-- ### Removed -->
 
+## [0.2.1] - 2023-10-13
+
+### Fixed
+
+- Fixed `pom.xml`
+
 ## [0.2.0] - 2023-10-13
 
 ### Fixed
@@ -25,6 +31,7 @@ All notable changes to this project will be documented in this file.
 
 - Initial release
 
-[unreleased]: https://github.com/scarletcomply/anyver/compare/v0.2.0...HEAD
+[unreleased]: https://github.com/scarletcomply/anyver/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/scarletcomply/anyver/compare/v0.1.0...v0.2.1
 [0.2.0]: https://github.com/scarletcomply/anyver/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/scarletcomply/anyver/releases/tag/v0.1.0

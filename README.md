@@ -45,13 +45,13 @@ Releases are available from [Clojars][clojars].
 deps.edn:
 
 ```clojure
-cc.scarlet/anyver {:mvn/version "0.2.0"}
+cc.scarlet/anyver {:mvn/version "0.2.1"}
 ```
 
 Leiningen/Boot:
 
 ```clojure
-[cc.scarlet/anyver "0.2.0"]
+[cc.scarlet/anyver "0.2.1"]
 ```
 
 ## License
