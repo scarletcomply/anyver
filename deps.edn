@@ -8,13 +8,9 @@
   {:extra-deps {org.clojure/clojurescript  {:mvn/version "1.11.60"}}}
 
   :kaocha
-  {:extra-deps {lambdaisland/kaocha {:mvn/version "1.87.1366"}}
+  {:extra-deps {lambdaisland/kaocha      {:mvn/version "1.87.1366"}
+                lambdaisland/kaocha-cljs {:mvn/version "1.5.154"}}
    :main-opts  ["-m" "kaocha.runner"]}
-
-  :cljs-test-runner
-  {:extra-deps  {olical/cljs-test-runner   {:mvn/version "3.8.0"}}
-   :main-opts   ["-m" "cljs-test-runner.main"
-                 "-o" "target/cljs-test-runner"]}
 
   :build
   {:deps {io.github.clojure/tools.build {:mvn/version "0.9.3"}

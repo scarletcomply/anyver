@@ -1,10 +1,27 @@
 {:deps {cc.scarlet/anyver {:local/root "."}}
- :tasks {jar       (clojure "-T:build" "jar")
-         test      {:depends [test:clj test:cljs test:bb]}
-         test:clj  (clojure "-M:test:kaocha")
-         test:cljs (clojure "-M:cljs:test:cljs-test-runner")
-         test:bb   {:extra-paths ["test"]
-                    :extra-deps {lambdaisland/kaocha {:mvn/version "1.87.1366"}}
-                    :requires ([kaocha.runner])
-                    :task (kaocha.runner/-main "unit")}
+ :tasks {test (run '-test:all #_{:parallel true})
+         -test:all {:depends [test:clj test:cljs test:bb]}
+
+         test:clj (do
+                    (println "Running Clojure tests...")
+                    (clojure "-M:test:kaocha" "unit"))
+
+         -prepare-kaocha-cljs {:requires ([babashka.fs :as fs])
+                               :task (when-not (fs/directory? "node_modules/ws")
+                                       (println "Installing `ws` package...")
+                                       (shell "npm install --no-save ws"))}
+
+         test:cljs {:depends [-prepare-kaocha-cljs]
+                    :task (do
+                            (println "Running ClojureScript tests...")
+                            (clojure "-M:test:kaocha" "unit-cljs"))}
+
+         test:bb {:extra-paths ["test"]
+                  :extra-deps {lambdaisland/kaocha {:mvn/version "1.87.1366"}}
+                  :requires ([kaocha.runner])
+                  :task (do
+                          (println "Running Babashka tests...")
+                          (kaocha.runner/-main "unit"))}
+
+         jar       (clojure "-T:build" "jar")
          deploy    (clojure "-T:build" "deploy")}}
