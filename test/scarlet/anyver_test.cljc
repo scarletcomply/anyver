@@ -11,36 +11,40 @@
   (is (version? (version (version "1.0"))))
   (is (version? (version nil))))
 
-(deftest equals-hashCode-test
-  (let [v1 (version [1 0])
-        v2 (version "1-0")
-        v3 (version "v1.0")]
+#?(:bb nil
+   :default
+   (deftest equals-hashCode-test
+     (let [v1 (version [1 0])
+           v2 (version "1-0")
+           v3 (version "v1.0")]
 
-    (is (= v1 v1))
-    (is (= v2 v2))
-    (is (= v3 v3))
+       (is (= v1 v1))
+       (is (= v2 v2))
+       (is (= v3 v3))
 
-    (is (= v1 v2))
-    (is (= v1 v3))
-    (is (= v2 v3))
+       (is (= v1 v2))
+       (is (= v1 v3))
+       (is (= v2 v3))
 
-    (is (= (hash v1) (hash v2)))
-    (is (= (hash v1) (hash v3)))
-    (is (= (hash v2) (hash v3)))
+       (is (= (hash v1) (hash v2)))
+       (is (= (hash v1) (hash v3)))
+       (is (= (hash v2) (hash v3)))
 
-    (is (not= v1 (str v1)))
-    (is (not= v2 (str v2)))
-    (is (not= v3 (str v3)))
+       (is (not= v1 (str v1)))
+       (is (not= v2 (str v2)))
+       (is (not= v3 (str v3)))
 
-    (is (not= (version 1) 1))
-    (is (not= (version [1 0]) [1 0]))
+       (is (not= (version 1) 1))
+       (is (not= (version [1 0]) [1 0]))
 
-    (is (= anyver/empty-version (version nil)))
-    (is (not= anyver/empty-version nil))))
+       (is (= anyver/empty-version (version nil)))
+       (is (not= anyver/empty-version nil)))))
 
-(deftest seq-test
-  (is (= [1 0] (seq (version "v1.0"))))
-  (is (= [1 2 3 "alpha" 42] (seq (version "1.2.3-alpha42")))))
+#?(:bb nil
+   :default
+   (deftest seq-test
+     (is (= [1 0] (seq (version "v1.0"))))
+     (is (= [1 2 3 "alpha" 42] (seq (version "1.2.3-alpha42"))))))
 
 (deftest compare-test
   (is (pos? (version-compare "2" "1")))

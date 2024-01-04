@@ -1,5 +1,10 @@
-{:tasks {jar       (clojure "-T:build" "jar")
-         test      {:depends [test:clj test:cljs]}
+{:deps {cc.scarlet/anyver {:local/root "."}}
+ :tasks {jar       (clojure "-T:build" "jar")
+         test      {:depends [test:clj test:cljs test:bb]}
          test:clj  (clojure "-M:test:kaocha")
          test:cljs (clojure "-M:cljs:test:cljs-test-runner")
+         test:bb   {:extra-paths ["test"]
+                    :extra-deps {lambdaisland/kaocha {:mvn/version "1.87.1366"}}
+                    :requires ([kaocha.runner])
+                    :task (kaocha.runner/-main "unit")}
          deploy    (clojure "-T:build" "deploy")}}

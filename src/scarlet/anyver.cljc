@@ -34,7 +34,9 @@
   Object
   (toString [_] (or s (str/join "." v)))
 
-  #?@(:clj
+  #?@(:bb []
+
+      :clj
       [(equals [_ other] (and (instance? Version other)
                               (= v (.-v ^Version other))))
        (hashCode [_] (hash v))

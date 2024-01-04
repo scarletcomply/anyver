@@ -8,7 +8,7 @@
   {:extra-deps {org.clojure/clojurescript  {:mvn/version "1.11.60"}}}
 
   :kaocha
-  {:extra-deps {lambdaisland/kaocha {:mvn/version "1.80.1274"}}
+  {:extra-deps {lambdaisland/kaocha {:mvn/version "1.87.1366"}}
    :main-opts  ["-m" "kaocha.runner"]}
 
   :cljs-test-runner
