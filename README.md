@@ -45,19 +45,19 @@ Releases are available from [Clojars][clojars].
 deps.edn:
 
 ```clojure
-cc.scarlet/anyver {:mvn/version "0.2.1"}
+cc.scarlet/anyver {:mvn/version "0.3.0"}
 ```
 
 Leiningen/Boot:
 
 ```clojure
-[cc.scarlet/anyver "0.2.1"]
+[cc.scarlet/anyver "0.3.0"]
 ```
 
 ## License
 
 Distributed under the [MIT License].  
-Copyright (c) 2023 [Scarlet Global Holdings Ltd][scarlet].
+Copyright (c) 2023-2024 [Scarlet Global Holdings Ltd][scarlet].
 
 [MIT License]: ./LICENSE
 [scarlet]: https://scarlet.cc
